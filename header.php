@@ -45,6 +45,8 @@ endif; ?>
   echo 'class="current-menu-item"'; ?>>Investments</a>
       <a href="<?php echo esc_url(aitana_page_url('protection')); ?>" <?php if (is_page('protection'))
   echo 'class="current-menu-item"'; ?>>Protection</a>
+      <a href="<?php echo esc_url(aitana_page_url('about')); ?>" <?php if (is_page('about'))
+  echo 'class="current-menu-item"'; ?>>About Us</a>
       <a href="<?php echo esc_url(aitana_page_url('contact')); ?>" <?php if (is_page('contact'))
   echo 'class="current-menu-item"'; ?>>Contact</a>
     </div>
@@ -66,6 +68,7 @@ endif; ?>
     <a href="<?php echo esc_url(aitana_page_url('self-employed-pensions')); ?>">Pensions</a>
     <a href="<?php echo esc_url(aitana_page_url('investment-principles')); ?>">Investments</a>
     <a href="<?php echo esc_url(aitana_page_url('protection')); ?>">Protection</a>
+    <a href="<?php echo esc_url(aitana_page_url('about')); ?>">About Us</a>
     <a href="<?php echo esc_url(aitana_page_url('contact')); ?>">Contact</a>
     <a href="tel:01795435094">📞 01795 435094</a>
   </div>
