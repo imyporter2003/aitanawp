@@ -122,6 +122,15 @@ get_header();
   </div>
 </section>
 
+<!-- ─── Google Reviews (Trustindex) ──────────────────────── -->
+<section class="section-sm" style="background:var(--bg-white);padding:56px 0;">
+  <div class="container">
+    <h2 class="section-title" style="margin-bottom:8px;">What Our Clients Say</h2>
+    <p class="section-sub">Rated 5 stars by hundreds of happy clients across the UK.</p>
+    <?php echo do_shortcode('[trustindex no-registration=google]'); ?>
+  </div>
+</section>
+
 <!-- ─── Openwork ─────────────────────────────────────────────── -->
 <section class="openwork">
   <div class="container">
