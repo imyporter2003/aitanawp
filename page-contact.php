@@ -38,40 +38,7 @@
       <div class="contact-form-card">
         <h2 style="margin-bottom:8px;font-size:1.5rem;">Send us a message</h2>
         <p style="margin-bottom:28px;font-size:0.9rem;">Fill in the form and one of our advisers will be in touch within one working day.</p>
-        <?php if (function_exists('wpcf7_get_tag')): ?>
-          <?php echo do_shortcode('[contact-form-7 id="ceab5ba" title="Contact form 1"]'); ?>
-        <?php
-else: ?>
-          <form id="aitana-contact-form" onsubmit="aitanaSubmitForm(event)">
-            <div class="form-row">
-              <div class="form-group"><label for="firstName">First Name *</label><input type="text" id="firstName" required placeholder="Jane" /></div>
-              <div class="form-group"><label for="lastName">Last Name *</label><input type="text" id="lastName" required placeholder="Smith" /></div>
-            </div>
-            <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" required placeholder="jane@example.com" /></div>
-            <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" placeholder="07700 900000" /></div>
-            <div class="form-group">
-              <label for="service">What can we help you with?</label>
-              <select id="service">
-                <option value="">Please select…</option>
-                <option>Mortgages</option><option>Remortgage</option><option>Pensions</option>
-                <option>Investments</option><option>Protection &amp; Insurance</option>
-                <option>Financial Planning</option><option>Other</option>
-              </select>
-            </div>
-            <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="Tell us a little about your situation…"></textarea></div>
-            <p class="form-privacy">The internet is not a secure medium and the privacy of your data cannot be guaranteed. By submitting this form you consent to us contacting you. See our <a href="https://www.theopenworkpartnership.com/privacy-notice/" target="_blank" rel="noopener">Privacy Policy</a>.</p>
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;">Send Message →</button>
-            <div id="form-success" style="display:none;margin-top:16px;padding:14px;background:var(--orange-light);border-radius:8px;color:var(--navy);font-size:0.9rem;font-weight:500;">✅ Thank you! We'll be in touch shortly.</div>
-          </form>
-          <script>
-            function aitanaSubmitForm(e) {
-              e.preventDefault();
-              document.getElementById('aitana-contact-form').style.opacity = '0.4';
-              document.getElementById('form-success').style.display = 'block';
-            }
-          </script>
-        <?php
-endif; ?>
+        <?php echo do_shortcode('[contact-form-7 id="ceab5ba" title="Contact form 1"]'); ?>
       </div>
     </div>
   </div>
