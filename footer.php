@@ -2,6 +2,9 @@
 /**
  * The footer — shown on every page, includes chatbot
  */
+if (!defined('ABSPATH')) {
+  exit;
+}
 ?>
 
   <!-- ─── Footer ──────────────────────────────────────────── -->

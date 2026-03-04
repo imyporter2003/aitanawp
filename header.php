@@ -2,6 +2,9 @@
 /**
  * The header — nav displayed on every page
  */
+if (!defined('ABSPATH')) {
+  exit;
+}
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>

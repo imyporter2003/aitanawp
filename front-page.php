@@ -2,6 +2,9 @@
 /**
  * Front Page template — Homepage
  */
+if (!defined('ABSPATH')) {
+  exit;
+}
 get_header();
 ?>
 

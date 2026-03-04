@@ -1,7 +1,13 @@
 <?php
 /**
- * index.php — Required WordPress fallback (redirects to front-page)
+ * index.php — Required WordPress fallback
+ * Added security check to prevent direct access fatal errors.
  */
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 get_header();
 if (have_posts()):
     while (have_posts()):
