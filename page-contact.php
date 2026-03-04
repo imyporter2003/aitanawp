@@ -39,8 +39,7 @@
         <h2 style="margin-bottom:8px;font-size:1.5rem;">Send us a message</h2>
         <p style="margin-bottom:28px;font-size:0.9rem;">Fill in the form and one of our advisers will be in touch within one working day.</p>
         <?php if (function_exists('wpcf7_get_tag')): ?>
-          <!-- Contact Form 7 shortcode — replace ID with your form ID after setup -->
-          <?php echo do_shortcode('[contact-form-7 id="YOUR_FORM_ID" title="Contact form 1"]'); ?>
+          <?php echo do_shortcode('[contact-form-7 id="ceab5ba" title="Contact form 1"]'); ?>
         <?php
 else: ?>
           <form id="aitana-contact-form" onsubmit="aitanaSubmitForm(event)">
