@@ -337,6 +337,18 @@ p {
     transition: all 0.3s;
 }
 
+.nav-toggle.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 .mobile-nav {
     display: none;
     background: var(--bg-white);
@@ -1648,17 +1660,35 @@ p {
     }
 }
 
-@media (max-width: 600px) {
-    .team-grid {
+@media (max-width: 992px) {
+    .hero-inner {
         grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-image-wrap {
+        max-width: 500px;
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
 
+    .nav-links,
     .nav-cta {
         display: none;
     }
@@ -1667,18 +1697,35 @@ p {
         display: flex;
     }
 
-    .pillars-grid {
+    .pillars-grid,
+    .services-grid,
+    .content-block,
+    .contact-grid,
+    .footer-grid {
         grid-template-columns: 1fr;
     }
 
-    .footer-grid {
-        grid-template-columns: 1fr;
+    .content-block {
         gap: 32px;
+        padding: 48px 0;
+    }
+
+    .content-block.reverse {
+        direction: ltr;
+        /* Reset RTL hack for mobile stacking */
     }
 
     .cta-banner-inner {
         flex-direction: column;
         text-align: center;
+    }
+
+    .about-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image-wrap {
+        display: none;
     }
 
     #adam-popup {
@@ -1698,6 +1745,26 @@ p {
 
     .form-row {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .trust-bar-inner {
+        gap: 20px;
     }
 }
 
