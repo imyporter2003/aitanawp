@@ -21,7 +21,8 @@ get_header();
       <p class="hero-desc">Expert financial advisers based in Kent and Taunton, giving you the best personalised advice for your circumstances. We've grown through recommendations from happy clients for over 30 years.</p>
       <div class="hero-actions">
         <a href="<?php echo esc_url(aitana_page_url('contact')); ?>" class="btn btn-primary">Get Free Advice</a>
-        <a href="tel:01795435094" class="btn btn-white">Call 01795 435094</a>
+        <button class="btn btn-white adam-trigger">Chat with A.D.A.M</button>
+        <a href="tel:01795435094" class="btn btn-outline" style="color:#fff;border-color:#fff;">Call 01795 435094</a>
       </div>
       <div class="hero-stats">
         <div><div class="hero-stat-num">30+</div><div class="hero-stat-label">Years of Experience</div></div>

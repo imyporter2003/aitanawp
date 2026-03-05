@@ -287,6 +287,14 @@ const ADAM_API_URL = ''; // e.g. 'https://aitana-ruby.vercel.app/'
                 if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
             });
         }
+
+        // Global trigger listener for any element with .adam-trigger class
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.adam-trigger')) {
+                e.preventDefault();
+                if (!isOpen) togglePopup();
+            }
+        });
     }
 
     function init() {
