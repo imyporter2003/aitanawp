@@ -3,6 +3,10 @@
  * Aitana Financial Services Theme — Functions
  */
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 if (!function_exists('aitana_setup')):
     function aitana_setup()
     {
