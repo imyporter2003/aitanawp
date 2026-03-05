@@ -41,14 +41,6 @@ function aitana_scripts()
         true
     );
 
-    // A.D.A.M Chatbot
-    wp_enqueue_script(
-        'aitana-chatbot',
-        get_template_directory_uri() . '/adam-chatbot.js',
-        array(),
-        '1.0.0',
-        true
-    );
 }
 add_action('wp_enqueue_scripts', 'aitana_scripts');
 

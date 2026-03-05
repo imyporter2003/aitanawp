@@ -43,7 +43,6 @@ if (!defined('ABSPATH')) {
         <div class="footer-col">
           <h5>Ask A.D.A.M</h5>
           <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);margin-bottom:16px;">Our AI assistant is available 24/7 to answer your financial questions instantly.</p>
-          <button class="btn btn-primary adam-trigger" style="font-size:0.85rem;padding:10px 20px;border:none;cursor:pointer;">Chat with A.D.A.M →</button>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
  */
 
 if (!defined('ABSPATH')) {
-    exit;
+  exit;
 }
 
 get_header(); ?>
@@ -20,8 +20,8 @@ get_header(); ?>
   <div class="section">
     <?php
 if (have_posts()):
-    while (have_posts()):
-        the_post();
+  while (have_posts()):
+    the_post();
 ?>
             <article id="post-<?php the_ID(); ?>" <?php post_class('search-item'); ?> style="margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 24px;">
                 <h3 class="entry-title"><a href="<?php the_permalink(); ?>" style="color: var(--navy); text-decoration: none;"><?php the_title(); ?></a></h3>
@@ -30,21 +30,18 @@ if (have_posts()):
                 </div>
             </article>
             <?php
-    endwhile;
+  endwhile;
 
-    the_posts_pagination(array(
-        'mid_size' => 2,
-        'prev_text' => __('&laquo; Previous', 'aitana'),
-        'next_text' => __('Next &raquo;', 'aitana'),
-    ));
+  the_posts_pagination(array(
+    'mid_size' => 2,
+    'prev_text' => __('&laquo; Previous', 'aitana'),
+    'next_text' => __('Next &raquo;', 'aitana'),
+  ));
 else:
 ?>
         <div style="text-align: center; padding: 48px 0;">
-            <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 32px;">Sorry, but nothing matched your search terms. Please try again with some different keywords or chat with A.D.A.M below.</p>
+            <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 32px;">Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
             <?php get_search_form(); ?>
-            <div style="margin-top: 32px;">
-                <button class="btn btn-primary adam-trigger">Ask A.D.A.M →</button>
-            </div>
         </div>
         <?php
 endif;

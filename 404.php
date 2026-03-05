@@ -4,7 +4,7 @@
  */
 
 if (!defined('ABSPATH')) {
-    exit;
+  exit;
 }
 
 get_header(); ?>
@@ -24,7 +24,6 @@ get_header(); ?>
     
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
         <a href="<?php echo esc_url(home_url('/')); ?>" class="btn btn-primary">Go to Homepage</a>
-        <button class="btn btn-outline adam-trigger">Ask A.D.A.M</button>
     </div>
 
     <div style="margin-top: 48px;">

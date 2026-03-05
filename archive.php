@@ -4,7 +4,7 @@
  */
 
 if (!defined('ABSPATH')) {
-    exit;
+  exit;
 }
 
 get_header(); ?>
@@ -21,8 +21,8 @@ get_header(); ?>
   <div class="section">
     <?php
 if (have_posts()):
-    while (have_posts()):
-        the_post();
+  while (have_posts()):
+    the_post();
 ?>
             <article id="post-<?php the_ID(); ?>" <?php post_class('archive-post'); ?> style="margin-bottom: 48px; border-bottom: 1px solid var(--border); padding-bottom: 32px;">
                 <h2 class="entry-title"><a href="<?php the_permalink(); ?>" style="color: var(--navy); text-decoration: none;"><?php the_title(); ?></a></h2>
@@ -35,16 +35,16 @@ if (have_posts()):
                 <a href="<?php the_permalink(); ?>" class="btn btn-outline" style="margin-top: 16px;">Read More</a>
             </article>
             <?php
-    endwhile;
+  endwhile;
 
-    the_posts_pagination(array(
-        'mid_size' => 2,
-        'prev_text' => __('&laquo; Previous', 'aitana'),
-        'next_text' => __('Next &raquo;', 'aitana'),
-    ));
+  the_posts_pagination(array(
+    'mid_size' => 2,
+    'prev_text' => __('&laquo; Previous', 'aitana'),
+    'next_text' => __('Next &raquo;', 'aitana'),
+  ));
 else:
 ?>
-        <p>No posts found in this archive. How can we help you? <button class="btn btn-primary adam-trigger">Ask A.D.A.M</button></p>
+        <p>No posts found in this archive.</p>
         <?php
 endif;
 ?>
