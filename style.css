@@ -2256,3 +2256,92 @@ p {
         display: none !important;
     }
 }
+
+/* ─── WordPress Core Alignment ──────────────────────────── */
+.alignleft {
+    float: left;
+    margin-right: 24px;
+    margin-bottom: 24px;
+}
+
+.alignright {
+    float: right;
+    margin-left: 24px;
+    margin-bottom: 24px;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+}
+
+.wp-caption {
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    max-width: 100%;
+    padding: 8px;
+    text-align: center;
+}
+
+.wp-caption img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.wp-caption-text {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin: 8px 0 0;
+}
+
+/* ─── Archive & Search Styles ───────────────────────────── */
+.archive-post,
+.search-item {
+    transition: transform 0.2s;
+}
+
+.archive-post:hover {
+    transform: translateX(8px);
+}
+
+.entry-title a:hover {
+    color: var(--orange) !important;
+}
+
+.entry-summary {
+    color: var(--text-mid);
+    line-height: 1.6;
+}
+
+/* ─── Pagination ────────────────────────────────────────── */
+.pagination {
+    margin-top: 48px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.page-numbers {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--navy);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.page-numbers.current {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+}
+
+.page-numbers:hover:not(.current) {
+    background: var(--orange-light);
+    color: var(--orange);
+    border-color: var(--orange);
+}
