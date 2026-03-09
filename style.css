@@ -2575,40 +2575,7 @@ p {
     box-shadow: 0 4px 14px rgba(237, 115, 59, 0.4);
 }
 
-/* ─── FAB (floating action button) ──────────────────────────── */
-#chat-fab-container {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 8000;
-}
-
-.chat-fab {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 14px 22px;
-    font-size: 1rem;
-    font-family: inherit;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 8px 28px rgba(237, 115, 59, 0.45);
-    transition: all var(--transition);
-    white-space: nowrap;
-}
-
-.chat-fab:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(237, 115, 59, 0.55);
-}
-
-.chat-fab-label {
-    font-size: 0.9rem;
-}
+/* ─── Removed FAB Styles ──────────────────────────── */
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 680px) {
@@ -2633,10 +2600,5 @@ p {
 
     .chat-trust-row {
         gap: 12px;
-    }
-
-    #chat-fab-container {
-        bottom: 16px;
-        right: 16px;
     }
 }

@@ -130,14 +130,6 @@ get_header();
     </div>
   </div>
 
-  <!-- ── Floating "Chat" button ─────────────────────────────────────── -->
-  <div id="chat-fab-container" style="display:none;">
-    <button class="chat-fab" id="chat-fab" aria-label="Open adviser chat">
-      💬
-      <span class="chat-fab-label">Chat with us</span>
-    </button>
-  </div>
-
 </main>
 
 <?php get_footer(); ?>
@@ -172,7 +164,6 @@ get_header();
   const $grid        = $('adviser-grid');
   const $loading     = $('chat-loading');
   const $noAdvisers  = $('chat-no-advisers');
-  const $fabContainer = $('chat-fab-container');
 
   // ── Load advisers ─────────────────────────────────────────────────────────
   async function loadAdvisers() {
@@ -203,9 +194,6 @@ get_header();
           openChatWidget(id, name);
         });
       });
-
-      // Show FAB if any online
-      if (online.length > 0) $fabContainer.style.display = 'flex';
 
       // Listen for real-time adviser status updates
       if (!socket) initSocket();
@@ -304,14 +292,6 @@ get_header();
   $closeBtn.addEventListener('click', closeChat);
   $overlay.addEventListener('click', (e) => {
     if (e.target === $overlay) closeChat();
-  });
-
-  $('chat-fab').addEventListener('click', () => {
-    // Open with the first available adviser
-    const firstBtn = $grid?.querySelector('[data-adviser-id]');
-    if (firstBtn) {
-      firstBtn.click();
-    }
   });
 
   function closeChat() {
