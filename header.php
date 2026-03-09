@@ -52,6 +52,8 @@ endif; ?>
   echo 'class="current-menu-item"'; ?>>About Us</a>
       <a href="<?php echo esc_url(aitana_page_url('contact')); ?>" <?php if (is_page('contact'))
   echo 'class="current-menu-item"'; ?>>Contact</a>
+      <a href="<?php echo esc_url(home_url('/?page_id=136')); ?>" <?php if (is_page('chat-with-an-adviser') || get_query_var('page_id') == 136)
+  echo 'class="current-menu-item"'; ?> style="font-weight: bold; color: var(--color-orange);">Live Chat <span class="nav-status-dot" style="display:inline-block; width:8px; height:8px; background-color:#22c55e; border-radius:50%; margin-left:4px;"></span></a>
     </div>
 
     <div class="nav-cta">
@@ -73,6 +75,7 @@ endif; ?>
     <a href="<?php echo esc_url(aitana_page_url('protection')); ?>">Protection</a>
     <a href="<?php echo esc_url(aitana_page_url('about')); ?>">About Us</a>
     <a href="<?php echo esc_url(aitana_page_url('contact')); ?>">Contact</a>
+    <a href="<?php echo esc_url(home_url('/?page_id=136')); ?>" style="font-weight: bold; color: var(--color-orange);">Live Chat</a>
     <a href="tel:01795435094">📞 01795 435094</a>
   </div>
 </nav>

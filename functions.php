@@ -64,3 +64,13 @@ function aitana_page_url($slug)
     $page = get_page_by_path($slug);
     return $page ? get_permalink($page->ID) : home_url('/' . $slug . '/');
 }
+
+/**
+ * Register custom page templates
+ */
+function aitana_register_page_templates($templates)
+{
+    $templates['page-chat.php'] = 'Chat with an Adviser';
+    return $templates;
+}
+add_filter('theme_page_templates', 'aitana_register_page_templates');
