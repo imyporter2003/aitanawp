@@ -45,6 +45,18 @@ function aitana_scripts()
 add_action('wp_enqueue_scripts', 'aitana_scripts');
 
 /**
+ * Add 'defer' attribute to enqueued scripts to prevent render-blocking.
+ */
+function aitana_defer_scripts($tag, $handle)
+{
+    if ('aitana-nav' === $handle) {
+        return str_replace(' src', ' defer src', $tag);
+    }
+    return $tag;
+}
+add_filter('script_loader_tag', 'aitana_defer_scripts', 10, 2);
+
+/**
  * Custom body classes
  */
 function aitana_body_classes($classes)

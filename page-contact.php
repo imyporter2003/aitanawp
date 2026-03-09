@@ -29,11 +29,6 @@ get_header(); ?>
             <div class="contact-link" style="cursor:default;">📍 43 Bridge Street, Taunton, Somerset TA1 1TP</div>
           </div>
         </div>
-        <div class="contact-info-card">
-          <h4 style="font-size:1rem;margin-bottom:12px;color:var(--navy);">Or chat with A.D.A.M</h4>
-          <p style="font-size:0.9rem;margin-bottom:16px;">Our AI assistant is available 24/7 and can answer most questions instantly.</p>
-          <button onclick="document.getElementById('adam-fab').click()" class="btn btn-primary" style="border:none;cursor:pointer;">Open A.D.A.M Chat →</button>
-        </div>
       </div>
 
       <!-- Contact Form -->
