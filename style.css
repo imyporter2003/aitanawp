@@ -687,6 +687,60 @@ p {
     align-self: flex-start;
 }
 
+.adviser-card-specialty {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    background: #f1f4f8;
+    padding: 4px 10px;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+/* ─── Specialty Filters ─────────────────────────────────────── */
+.adviser-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    border-radius: 50px;
+    background: var(--bg-white);
+    border: 1.5px solid var(--border);
+    color: var(--text-mid);
+    font-size: 0.9rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.filter-btn:hover {
+    border-color: var(--orange-light);
+    color: var(--orange);
+}
+
+.filter-btn.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(12, 35, 64, 0.2);
+}
+
+.chat-no-filter-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--border);
+}
+
 /* ─── About ─────────────────────────────────────────────────── */
 .about {
     background: var(--bg-white);

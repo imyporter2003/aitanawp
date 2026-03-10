@@ -65,6 +65,9 @@ get_header();
         <p>Our team is offline at the moment. Please call us on <a href="tel:01795435094">01795 435094</a> or <a href="<?php echo esc_url(home_url('/contact')); ?>">send us a message</a>.</p>
       </div>
 
+      <!-- Filter tabs -->
+      <div id="adviser-filters" class="adviser-filters" style="display:none;"></div>
+
       <!-- Adviser cards grid -->
       <div id="adviser-grid" class="adviser-grid" style="display:none;"></div>
     </div>
@@ -144,6 +147,7 @@ get_header();
   const SERVER_URL = <?php echo json_encode($chat_server_url); ?>;
   let socket = null;
   let activeAdviserId = null;
+  let activeFilter = 'All';
   let sessionId = null;
   let customerName = '';
   let customerEmail = '';
@@ -181,19 +185,50 @@ get_header();
       // Separate online/offline
       const online  = all.filter(a => a.is_online);
       const offline = all.filter(a => !a.is_online);
-      const sorted  = [...online, ...offline];
+      let sorted  = [...online, ...offline];
+
+      // Extract unique specialties dynamically
+      const specialties = ['All', ...new Set(sorted.map(a => a.specialty).filter(s => s && s.trim() !== ''))];
+      
+      const $filters = $('adviser-filters');
+      if (specialties.length > 1) {
+        $filters.style.display = 'flex';
+        $filters.innerHTML = specialties.map(s => {
+          const isActive = s === activeFilter;
+          return `<button class="filter-btn ${isActive ? 'active' : ''}" data-filter="${escapeHtml(s)}">${escapeHtml(s)}</button>`;
+        }).join('');
+        
+        // Bind filter clicks
+        $filters.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+             activeFilter = btn.dataset.filter;
+             loadAdvisers(); // Re-render with new filter
+          });
+        });
+      } else {
+         $filters.style.display = 'none';
+      }
+
+      // Apply the active filter
+      if (activeFilter !== 'All') {
+         sorted = sorted.filter(a => a.specialty === activeFilter);
+      }
 
       $grid.style.display = 'grid';
-      $grid.innerHTML = sorted.map(buildAdviserCard).join('');
-
-      // Bind "Start Chat" buttons
-      $grid.querySelectorAll('[data-adviser-id]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const id    = btn.dataset.adviserId;
-          const name  = btn.dataset.adviserName;
-          openChatWidget(id, name);
-        });
-      });
+      if (sorted.length > 0) {
+          $grid.innerHTML = sorted.map(buildAdviserCard).join('');
+          
+          // Bind "Start Chat" buttons
+          $grid.querySelectorAll('[data-adviser-id]').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const id    = btn.dataset.adviserId;
+              const name  = btn.dataset.adviserName;
+              openChatWidget(id, name);
+            });
+          });
+      } else {
+          $grid.innerHTML = '<p class="chat-no-filter-results">No advisers currently listed for this specialty.</p>';
+      }
 
       // Listen for real-time adviser status updates
       if (!socket) initSocket();
