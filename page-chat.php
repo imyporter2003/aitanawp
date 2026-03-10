@@ -147,6 +147,7 @@ get_header();
   const SERVER_URL = <?php echo json_encode($chat_server_url); ?>;
   let socket = null;
   let activeAdviserId = null;
+  let currentAdviserAvatar = null;
   let activeFilter = 'All';
   let sessionId = null;
   let customerName = '';
@@ -223,7 +224,8 @@ get_header();
             btn.addEventListener('click', () => {
               const id    = btn.dataset.adviserId;
               const name  = btn.dataset.adviserName;
-              openChatWidget(id, name);
+              const avatar = btn.dataset.adviserAvatar || null;
+              openChatWidget(id, name, avatar);
             });
           });
       } else {
@@ -248,9 +250,13 @@ get_header();
     const canChat = adviser.is_online && adviser.status !== 'offline';
     const initials = adviser.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
 
+    const avatarHtml = adviser.avatar 
+        ? `<img src="${adviser.avatar}" alt="Avatar" style="width:100%; height:100%; object-fit:cover;" />` 
+        : initials;
+
     return `
       <div class="adviser-card${adviser.is_online ? ' adviser-card--online' : ''}">
-        <div class="adviser-card-avatar">${initials}</div>
+        <div class="adviser-card-avatar">${avatarHtml}</div>
         <div class="adviser-card-status ${statusClass}">
           <span class="status-dot ${statusClass}"></span>
           ${statusLabel}
@@ -259,7 +265,7 @@ get_header();
         <p class="adviser-card-title">${escapeHtml(adviser.title)}</p>
         <p class="adviser-card-specialty">${escapeHtml(adviser.specialty)}</p>
         ${canChat
-          ? `<button class="btn btn-primary adviser-chat-btn" data-adviser-id="${adviser.id}" data-adviser-name="${escapeHtml(adviser.name)}">
+          ? `<button class="btn btn-primary adviser-chat-btn" data-adviser-id="${adviser.id}" data-adviser-name="${escapeHtml(adviser.name)}" data-adviser-avatar="${adviser.avatar ? adviser.avatar : ''}">
                💬 Start Chat
              </button>`
           : `<button class="btn adviser-chat-btn--disabled" disabled>
@@ -315,10 +321,18 @@ get_header();
   }
 
   // ── Chat widget ────────────────────────────────────────────────────────────
-  function openChatWidget(adviserId, adviserName) {
+  function openChatWidget(adviserId, adviserName, adviserAvatar) {
     activeAdviserId = adviserId;
+    currentAdviserAvatar = adviserAvatar;
     $('chat-modal-name').textContent = adviserName;
-    $('chat-modal-avatar').textContent = adviserName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+    
+    if (adviserAvatar) {
+      $('chat-modal-avatar').innerHTML = `<img src="${adviserAvatar}" alt="Avatar" style="width:100%; height:100%; object-fit:cover; border-radius:50%;" />`;
+    } else {
+      $('chat-modal-avatar').innerHTML = '';
+      $('chat-modal-avatar').textContent = adviserName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+    }
+    
     $overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     if (!socket) initSocket();
@@ -407,9 +421,20 @@ get_header();
       div.textContent = content;
     } else {
       div.className = `chat-msg chat-msg--${type}`;
+      
+      let avatarImg = '';
+      if (type === 'adviser' && currentAdviserAvatar) {
+          avatarImg = `<img src="${currentAdviserAvatar}" alt="Avatar" style="width:28px; height:28px; border-radius:50%; object-fit:cover; margin-right:8px; align-self:flex-end;" />`;
+      }
+      
       div.innerHTML = `
-        <div class="chat-msg-bubble">${escapeHtml(content)}</div>
-        <div class="chat-msg-meta">${escapeHtml(senderName || type)} · ${time}</div>`;
+        <div style="display:flex; max-width:100%;">
+            ${avatarImg}
+            <div style="flex:1;">
+                <div class="chat-msg-bubble">${escapeHtml(content)}</div>
+                <div class="chat-msg-meta">${escapeHtml(senderName || type)} · ${time}</div>
+            </div>
+        </div>`;
     }
 
     $messages.appendChild(div);
